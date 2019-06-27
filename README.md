@@ -20,6 +20,7 @@ The project's repository can be cloned and deployed by the following commands:
     cd opennms-alexa
     mvn wildfly:run
     
+Use the file `opennms-alexa.properties` to point your skill servlet to the OpenNMS to be used.    
 In order for the endpoint to be accepted by Amazon, it must be protected by SSL on the default port (443). This isn't documented anywhere. It took me days to figure out, that only the standard HTTPS port can be used.
 
 ## Requirements
