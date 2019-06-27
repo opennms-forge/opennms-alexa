@@ -56,3 +56,14 @@ You can now use the skill with your Echo devices:
 
 ![Cat](https://github.com/opennms-forge/opennms-alexa/raw/master/docs/echo-device.png)
 
+## Images
+
+The original photographs are downloaded from [pixabay.com](https://pixabay.com). These are free to use and no attribution is required. See [FAQ](https://pixabay.com/service/license/) for details.
+
+[Node background](https://pixabay.com/photos/computers-information-technology-2653005/)
+
+[Outage background](https://pixabay.com/photos/lost-places-industry-factory-3694022/)
+
+[Alarm background](https://pixabay.com/photos/red-warning-alert-bulb-light-2708362/)
+
+[Overview background](https://pixabay.com/photos/building-control-panel-controls-1853330/)
