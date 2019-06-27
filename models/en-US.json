@@ -1,0 +1,161 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "opehn n. m. s.",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.MoreIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateSettingsIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NextIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PageUpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PageDownIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PreviousIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollRightIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollDownIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollLeftIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollUpIntent",
+          "samples": []
+        },
+        {
+          "name": "ListSelectionIntent",
+          "slots": [
+            {
+              "name": "number",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "show {number}",
+            "choose {number}",
+            "pick {number}",
+            "open {number}",
+            "select {number}",
+            "{number}"
+          ]
+        },
+        {
+          "name": "NodesIntent",
+          "slots": [],
+          "samples": [
+            "show nodes",
+            "show my nodes",
+            "display nodes",
+            "display my nodes"
+          ]
+        },
+        {
+          "name": "OutagesIntent",
+          "slots": [],
+          "samples": [
+            "show outages",
+            "show my outages",
+            "show ongoing outages",
+            "show current outages",
+            "display outages",
+            "display my outages",
+            "display ongoing outages",
+            "display current outages"
+          ]
+        },
+        {
+          "name": "AlarmsIntent",
+          "slots": [],
+          "samples": [
+            "show alarms",
+            "show my alarms",
+            "show ongoing alarms",
+            "show current alarms",
+            "display alarms",
+            "display my alarms",
+            "display ongoing alarms",
+            "display current alarms"
+          ]
+        },
+        {
+          "name": "OutagesOverviewIntent",
+          "slots": [],
+          "samples": [
+            "are there any outages",
+            "any outages",
+            "any ongoing outages",
+            "outages",
+            "any current outages"
+          ]
+        },
+        {
+          "name": "AlarmsOverviewIntent",
+          "slots": [],
+          "samples": [
+            "are there any alarms",
+            "any alarms",
+            "any ongoing alarms",
+            "alarms",
+            "any current alarms"
+          ]
+        },
+        {
+          "name": "SearchMoreIntent",
+          "slots": [],
+          "samples": [
+            "search more",
+            "more",
+            "show more",
+            "display more",
+            "show more results",
+            "display more results",
+            "more results",
+            "search more results"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}

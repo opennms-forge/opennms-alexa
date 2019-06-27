@@ -1,0 +1,180 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "opehn n. m. s.",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.MoreIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateSettingsIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NextIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PageUpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PageDownIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PreviousIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollRightIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollDownIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollLeftIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollUpIntent",
+          "samples": []
+        },
+        {
+          "name": "ListSelectionIntent",
+          "slots": [
+            {
+              "name": "number",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "zeige {number}",
+            "wähle {number}",
+            "öffne {number}",
+            "zeige Ergebnis {number}",
+            "wähle Ergebnis {number}",
+            "öffne Ergebnis {number}",
+            "{number}"
+          ]
+        },
+        {
+          "name": "NodesIntent",
+          "slots": [],
+          "samples": [
+            "zeige Knoten",
+            "zeige die Knoten",
+            "zeige meine Knoten",
+            "zeige Nodes",
+            "zeige die Nodes",
+            "zeige meine Nodes"
+          ]
+        },
+        {
+          "name": "OutagesIntent",
+          "slots": [],
+          "samples": [
+            "zeige Outages",
+            "zeige akute Outages",
+            "zeige momentane Outages",
+            "zeige aktuelle Outages",
+            "zeige die Outages",
+            "zeige die akuten Outages",
+            "zeige die momentanen Outages",
+            "zeige die aktuellen Outages",
+            "zeige Ausfälle",
+            "zeige akute Ausfälle",
+            "zeige momentane Ausfälle",
+            "zeige aktuelle Ausfälle",
+            "zeige die Ausfälle",
+            "zeige die akuten Ausfälle",
+            "zeige die momentanen Ausfälle",
+            "zeige die aktuellen Ausfälle"
+          ]
+        },
+        {
+          "name": "AlarmsIntent",
+          "slots": [],
+          "samples": [
+            "zeige Alarme",
+            "zeige akute alarme",
+            "zeige momentane Alarme",
+            "zeige aktuelle Alarme",
+            "zeige die Alarme",
+            "zeige die akuten Alarme",
+            "zeige die momentanen Alarme",
+            "zeige die aktuellen Alarme"
+          ]
+        },
+        {
+          "name": "OutagesOverviewIntent",
+          "slots": [],
+          "samples": [
+            "Gibt es Ausfälle",
+            "Gibt es gerade Ausfälle",
+            "Gibt es momentane Ausfälle",
+            "Gibt es akute Ausfälle",
+            "Gibt es aktuelle Ausfälle",
+            "Gibt es gegenwärtig Ausfälle",
+            "Gibt es Outages",
+            "Gibt es gerade Outages",
+            "Gibt es momentane Outages",
+            "Gibt es akute Outages",
+            "Gibt es aktuelle Outages",
+            "Gibt es gegenwärtig Outages"
+          ]
+        },
+        {
+          "name": "AlarmsOverviewIntent",
+          "slots": [],
+          "samples": [
+            "Gibt es Alarme",
+            "Gibt es gerade Alarme",
+            "Gibt es momentane Alarme",
+            "Gibt es akute Alarme",
+            "Gibt es aktuelle Alarme",
+            "Gibt es gegenwärtig Alarme"
+          ]
+        },
+        {
+          "name": "SearchMoreIntent",
+          "slots": [],
+          "samples": [
+            "suche weiter",
+            "weitersuchen",
+            "zeige mehr",
+            "zeige weitere",
+            "zeige weitere Ergebnisse",
+            "suche mehr",
+            "suche weitere",
+            "suche mehr Ergebnisse"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}

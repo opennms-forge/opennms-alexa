@@ -1,0 +1,31 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>opennms-alexa</display-name>
+
+    <welcome-file-list>
+        <welcome-file>/skill</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>opennms-alexa</servlet-name>
+        <servlet-class>org.opennms.alexa.OpenNMSAlexaSkillServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>opennms-alexa-graph</servlet-name>
+        <servlet-class>org.opennms.alexa.OpenNMSGraphServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>opennms-alexa</servlet-name>
+        <url-pattern>/skill</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>opennms-alexa-graph</servlet-name>
+        <url-pattern>/graph</url-pattern>
+    </servlet-mapping>
+</web-app>
