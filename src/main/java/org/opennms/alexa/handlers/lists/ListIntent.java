@@ -34,6 +34,7 @@ public class ListIntent<T> implements RequestHandler {
         private Function<? super B, ? extends ListItem> listFunction;
         private Map<String, Function<? super B, ? extends Template>> selectionFunction = new HashMap<>();
         private Map<String, Function<? super B, String>> selectionSpeechFunction = new HashMap<>();
+        private String parameters = "";
 
         private Class<B> clazz;
 
@@ -70,6 +71,11 @@ public class ListIntent<T> implements RequestHandler {
             return this;
         }
 
+        public Builder<B> withParameters(final String parameters) {
+            this.parameters = parameters;
+            return this;
+        }
+
         public Builder<B> withClass(final Class clazz) {
             this.clazz = clazz;
             return this;
@@ -87,6 +93,7 @@ public class ListIntent<T> implements RequestHandler {
     private final Map<String, Function<? super T, ? extends Template>> selectionFunction;
     private Map<String, Function<? super T, String>> selectionSpeechFunction = new HashMap<>();
     private final Class<T> clazz;
+    private String parameters;
 
     private ListIntent(Builder<T> builder) {
         this.intentName = builder.intentName;
@@ -94,6 +101,7 @@ public class ListIntent<T> implements RequestHandler {
         this.listFunction = builder.listFunction;
         this.selectionFunction = builder.selectionFunction;
         this.selectionSpeechFunction = builder.selectionSpeechFunction;
+        this.parameters = builder.parameters;
         this.clazz = builder.clazz;
         this.title = builder.title;
     }
@@ -211,7 +219,7 @@ public class ListIntent<T> implements RequestHandler {
                             .build();
                 }
 
-                final List<T> entities = openNMSRestClient.getEntities(clazz, path, offset - 1 + id, 1);
+                final List<T> entities = openNMSRestClient.getEntities(clazz, path, parameters,offset - 1 + id, 1);
                 if (entities.size() == 1) {
                     entity = entities.get(0);
                 }
@@ -255,7 +263,7 @@ public class ListIntent<T> implements RequestHandler {
         handlerInput.getAttributesManager().getSessionAttributes().put("searchIntent", this.intentName);
         handlerInput.getAttributesManager().getSessionAttributes().put("offset", offset);
 
-        final List<T> entities = openNMSRestClient.getEntities(clazz, path, offset, ITEM_LIMIT);
+        final List<T> entities = openNMSRestClient.getEntities(clazz, path, parameters, offset, ITEM_LIMIT);
         final List<ListItem> items = entities.stream().map(listFunction).collect(Collectors.toList());
 
         if (entities.size() > 0) {

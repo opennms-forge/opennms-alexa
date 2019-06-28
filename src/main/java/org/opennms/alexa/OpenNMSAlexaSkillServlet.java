@@ -96,7 +96,8 @@ public class OpenNMSAlexaSkillServlet extends SkillServlet {
                                 .withClass(OnmsOutage.class)
                                 .withIntentName("OutagesIntent")
                                 .withTitle("Outages")
-                                .withPath("/rest/outages?ifRegainedService=null")
+                                .withPath("/rest/outages")
+                                .withParameters("ifRegainedService=null")
                                 .withListFunction(
                                         o -> ListItem.builder()
                                                 .withToken(String.valueOf(o.getId()))
@@ -127,7 +128,8 @@ public class OpenNMSAlexaSkillServlet extends SkillServlet {
                                 .withClass(OnmsAlarm.class)
                                 .withIntentName("AlarmsIntent")
                                 .withTitle("Alarms")
-                                .withPath("/rest/alarms?comparator=gt&severity=NORMAL&alarmAckTime=null")
+                                .withPath("/rest/alarms")
+                                .withParameters("comparator=gt&severity=NORMAL&alarmAckTime=null")
                                 .withListFunction(
                                         a -> ListItem.builder()
                                                 .withToken(String.valueOf(a.getId()))

@@ -31,7 +31,7 @@ public class OutagesOverviewIntent extends AbstractIntent {
     public Optional<Response> handleDeviceWithScreen(final HandlerInput handlerInput, final IntentRequest intentRequest, final LocaleUtils.LocaleManager localeManager) {
         final OpenNMSRestClient openNMSRestClient = new OpenNMSRestClient();
 
-        final List<OnmsOutage> outages = openNMSRestClient.getEntities(OnmsOutage.class, "/rest/outages?serviceRegainedEvent=NULL", 0, 0);
+        final List<OnmsOutage> outages = openNMSRestClient.getEntities(OnmsOutage.class, "/rest/outages","serviceRegainedEvent=NULL", 0, 0);
         final long affectedNodes = outages.stream().map(o -> openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId())).distinct().count();
 
         final String speech;
@@ -64,7 +64,7 @@ public class OutagesOverviewIntent extends AbstractIntent {
     public Optional<Response> handleDeviceWithoutScreen(final HandlerInput handlerInput, final IntentRequest intentRequest, final LocaleUtils.LocaleManager localeManager) {
         final OpenNMSRestClient openNMSRestClient = new OpenNMSRestClient();
 
-        final List<OnmsOutage> outages = openNMSRestClient.getEntities(OnmsOutage.class, "/rest/outages?serviceRegainedEvent=NULL", 0, 0);
+        final List<OnmsOutage> outages = openNMSRestClient.getEntities(OnmsOutage.class, "/rest/outages","serviceRegainedEvent=NULL", 0, 0);
         final long affectedNodes = outages.stream().map(o -> openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId())).distinct().count();
 
         final String speech;

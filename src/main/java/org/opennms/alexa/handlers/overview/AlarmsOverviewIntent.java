@@ -32,7 +32,7 @@ public class AlarmsOverviewIntent extends AbstractIntent {
     public Optional<Response> handleDeviceWithScreen(final HandlerInput handlerInput, final IntentRequest intentRequest, final LocaleUtils.LocaleManager localeManager) {
         final OpenNMSRestClient openNMSRestClient = new OpenNMSRestClient();
 
-        final List<OnmsAlarm> alarms = openNMSRestClient.getEntities(OnmsAlarm.class, "/rest/alarms?alarmAckTime=NULL", 0, 0);
+        final List<OnmsAlarm> alarms = openNMSRestClient.getEntities(OnmsAlarm.class, "/rest/alarms","alarmAckTime=NULL", 0, 0);
         final OnmsSeverity maxSeverity = alarms.stream().map(a -> a.getSeverity()).max(OnmsSeverity::compareTo).get();
 
         final String speech;
@@ -65,7 +65,7 @@ public class AlarmsOverviewIntent extends AbstractIntent {
     public Optional<Response> handleDeviceWithoutScreen(final HandlerInput handlerInput, final IntentRequest intentRequest, final LocaleUtils.LocaleManager localeManager) {
         final OpenNMSRestClient openNMSRestClient = new OpenNMSRestClient();
 
-        final List<OnmsAlarm> alarms = openNMSRestClient.getEntities(OnmsAlarm.class, "/rest/alarms?alarmAckTime=NULL", 0, 0);
+        final List<OnmsAlarm> alarms = openNMSRestClient.getEntities(OnmsAlarm.class, "/rest/alarms","alarmAckTime=NULL", 0, 0);
         final OnmsSeverity maxSeverity = alarms.stream().map(a -> a.getSeverity()).max(OnmsSeverity::compareTo).get();
 
         final String speech;

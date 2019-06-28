@@ -68,7 +68,7 @@ public class OpenNMSRestClient {
                 .get(clazz);
     }
 
-    public <T> List<T> getEntities(final Class<T> clazz, final String path, int offset, int limit) {
+    public <T> List<T> getEntities(final Class<T> clazz, final String path, final String parameters, int offset, int limit) {
         final ParameterizedType parameterizedGenericType = new ParameterizedType() {
             public Type[] getActualTypeArguments() {
                 return new Type[]{clazz};
@@ -88,13 +88,13 @@ public class OpenNMSRestClient {
         };
 
         return getHttpClient()
-                .target(this.baseUrl + path + (path.contains("?") ? "&" : "?") + "offset=" + offset + "&limit=" + limit)
+                .target(this.baseUrl + path + "?" + parameters + ("".equals(parameters)?"":"&") + "offset=" + offset + "&limit=" + limit)
                 .request(MediaType.APPLICATION_XML)
                 .get(genericType);
     }
 
     public String getOutagesForNode(final int nodeId) {
-        final List<OnmsOutage> outages = getEntities(OnmsOutage.class, "/rest/outages/forNode/" + nodeId + "?serviceRegainedEvent=NULL", 0, 0);
+        final List<OnmsOutage> outages = getEntities(OnmsOutage.class, "/rest/outages/forNode/" + nodeId ,"serviceRegainedEvent=NULL", 0, 0);
 
         if (outages.size() > 0) {
             String richText = String.format("<b>%d ongoing outages:</b><br/>", outages.size());
@@ -110,7 +110,7 @@ public class OpenNMSRestClient {
     }
 
     public String getAlarmsForNode(final int nodeId) {
-        final List<OnmsAlarm> alarms = getEntities(OnmsAlarm.class, "/rest/alarms/?nodeId=" + nodeId + "&alarmAckTime=null", 0, 0);
+        final List<OnmsAlarm> alarms = getEntities(OnmsAlarm.class, "/rest/alarms/","nodeId=" + nodeId + "&alarmAckTime=null", 0, 0);
 
         if (alarms.size() > 0) {
             String richText = String.format("<b>%d unacknowledged alarms:</b><br/>", alarms.size());
