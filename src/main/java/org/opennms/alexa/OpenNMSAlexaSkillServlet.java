@@ -103,7 +103,7 @@ public class OpenNMSAlexaSkillServlet extends SkillServlet {
                                                 .withToken(String.valueOf(o.getId()))
                                                 .withTextContent(TextContent.builder()
                                                         .withPrimaryText(PlainText.builder().withText("Outage #" + o.getId() + " (" + time("en-US", o.getIfLostService()) + " ago)").build())
-                                                        .withSecondaryText(RichText.builder().withText(size(2, openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId()) + " / " + InetAddressUtils.toIpAddrString(o.getServiceLostEvent().getIpAddr()) + " / " + o.getServiceType().getName())).build())
+                                                        .withSecondaryText(RichText.builder().withText(size(2, openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId()) + " / " + inetAddress(o) + " / " + o.getServiceType().getName())).build())
                                                         .build())
                                                 .build())
                                 .withSelectionFunction("en-US",
@@ -118,11 +118,11 @@ public class OpenNMSAlexaSkillServlet extends SkillServlet {
                                                         .build())
                                                 .withTextContent(TextContent.builder()
                                                         .withPrimaryText(PlainText.builder().withText(o.getIfLostService() + " (" + time("en-US", o.getIfLostService()) + " ago)").build())
-                                                        .withSecondaryText(RichText.builder().withText(openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId()) + " / " + InetAddressUtils.toIpAddrString(o.getServiceLostEvent().getIpAddr()) + " / " + o.getServiceType().getName()).build())
+                                                        .withSecondaryText(RichText.builder().withText(openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId()) + " / " + inetAddress(o) + " / " + o.getServiceType().getName()).build())
                                                         .build())
                                                 .build())
-                                .withSelectionSpeechFunction("en-US", o -> "outage #" + o.getId() + ", " + time("en-US", o.getIfLostService()) + " ago, interface " + InetAddressUtils.toIpAddrString(o.getServiceLostEvent().getIpAddr()) + ", node " + openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId()) + ", service " + o.getServiceType().getName())
-                                .withSelectionSpeechFunction("de-DE", o -> "Ausfall #" + o.getId() + ", vor " + time("de-DE", o.getIfLostService()) + ", Schnittstelle " + InetAddressUtils.toIpAddrString(o.getServiceLostEvent().getIpAddr()) + ", Knoten " + openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId()) + ", Dienst " + o.getServiceType().getName())
+                                .withSelectionSpeechFunction("en-US", o -> "outage #" + o.getId() + ", " + time("en-US", o.getIfLostService()) + " ago, interface " + inetAddress(o) + ", node " + openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId()) + ", service " + o.getServiceType().getName())
+                                .withSelectionSpeechFunction("de-DE", o -> "Ausfall #" + o.getId() + ", vor " + time("de-DE", o.getIfLostService()) + ", Schnittstelle " + inetAddress(o) + ", Knoten " + openNMSRestClient.getNodeLabelForIfService(o.getMonitoredService().getId()) + ", Dienst " + o.getServiceType().getName())
                                 .build(),
                         ListIntent.<OnmsAlarm>builder()
                                 .withClass(OnmsAlarm.class)
@@ -169,6 +169,21 @@ public class OpenNMSAlexaSkillServlet extends SkillServlet {
                 .build();
     }
 
+    private static String inetAddress(final OnmsOutage o) {
+        if (o == null) {
+            return "-";
+        }
+
+        if (o.getServiceLostEvent()==null) {
+            return "-";
+        }
+
+        if (o.getServiceLostEvent().getIpAddr() == null) {
+            return "-";
+        }
+
+        return InetAddressUtils.toIpAddrString(o.getServiceLostEvent().getIpAddr());
+    }
     private static String size(final int size, final String text) {
         return "<font size=\"" + size + "\">" + StringEscapeUtils.escapeXml(text) + "</font>";
     }
