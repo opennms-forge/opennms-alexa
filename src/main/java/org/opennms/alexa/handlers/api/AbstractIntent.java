@@ -15,6 +15,7 @@ public abstract class AbstractIntent implements IntentRequestHandler {
     public abstract boolean canHandle(final HandlerInput input, final IntentRequest intentRequest);
 
     public abstract Optional<Response> handleDeviceWithScreen(final HandlerInput handlerInput, final IntentRequest intentRequest, final LocaleUtils.LocaleManager localeManager);
+
     public abstract Optional<Response> handleDeviceWithoutScreen(final HandlerInput handlerInput, final IntentRequest intentRequest, final LocaleUtils.LocaleManager localeManager);
 
     @Override

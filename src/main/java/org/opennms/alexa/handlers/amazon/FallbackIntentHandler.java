@@ -1,6 +1,5 @@
 package org.opennms.alexa.handlers.amazon;
 
-
 import static com.amazon.ask.request.Predicates.intentName;
 
 import java.util.Optional;
@@ -17,9 +16,6 @@ import com.amazon.ask.model.interfaces.display.ImageInstance;
 import com.amazon.ask.model.interfaces.display.RichText;
 import com.amazon.ask.model.interfaces.display.TextContent;
 
-// 2018-July-09: AMAZON.FallackIntent is only currently available in en-US locale.
-//              This handler will not be triggered except in that locale, so it can be
-//              safely deployed for any locale.
 public class FallbackIntentHandler implements RequestHandler {
 
     @Override

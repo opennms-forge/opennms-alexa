@@ -94,13 +94,13 @@ public class OpenNMSRestClient {
     }
 
     public String getOutagesForNode(final int nodeId) {
-        final List<OnmsOutage> outages = getEntities(OnmsOutage.class, "/rest/outages/forNode/" + nodeId + "?serviceRegainedEvent=NULL", 0,0);
+        final List<OnmsOutage> outages = getEntities(OnmsOutage.class, "/rest/outages/forNode/" + nodeId + "?serviceRegainedEvent=NULL", 0, 0);
 
         if (outages.size() > 0) {
             String richText = String.format("<b>%d ongoing outages:</b><br/>", outages.size());
 
             for (final OnmsOutage outage : outages) {
-                richText += "Outage #"+outage.getId()+" ("+outage.getServiceLostEvent().getEventTime()+"):<br/><font size='2'><i>"+InetAddressUtils.toIpAddrString(outage.getServiceLostEvent().getIpAddr())+" / "+outage.getServiceLostEvent().getServiceType().getName()+"</i></font><br/>";
+                richText += "Outage #" + outage.getId() + " (" + outage.getServiceLostEvent().getEventTime() + "):<br/><font size='2'><i>" + InetAddressUtils.toIpAddrString(outage.getServiceLostEvent().getIpAddr()) + " / " + outage.getServiceLostEvent().getServiceType().getName() + "</i></font><br/>";
 
             }
             return richText;
@@ -110,14 +110,14 @@ public class OpenNMSRestClient {
     }
 
     public String getAlarmsForNode(final int nodeId) {
-        final List<OnmsAlarm> alarms = getEntities(OnmsAlarm.class, "/rest/alarms/?nodeId=" + nodeId + "&alarmAckTime=null", 0,0);
+        final List<OnmsAlarm> alarms = getEntities(OnmsAlarm.class, "/rest/alarms/?nodeId=" + nodeId + "&alarmAckTime=null", 0, 0);
 
         if (alarms.size() > 0) {
             String richText = String.format("<b>%d unacknowledged alarms:</b><br/>", alarms.size());
 
 
             for (final OnmsAlarm alarm : alarms) {
-                richText += "<img src='"+ OpenNMSAlexaSkillServlet.SERVLET_URL + "/images/alarm-" + alarm.getSeverityLabel().toLowerCase() + ".png' height='37' width='14' /> Alarm #" + alarm.getId() + " (" + alarm.getLastEventTime() + "):<br/><font size='2'><i>"+alarm.getLogMsg().replaceAll("\\<.*?>", "")+"</i></font>";
+                richText += "<img src='" + OpenNMSAlexaSkillServlet.SERVLET_URL + "/images/alarm-" + alarm.getSeverityLabel().toLowerCase() + ".png' height='37' width='14' /> Alarm #" + alarm.getId() + " (" + alarm.getLastEventTime() + "):<br/><font size='2'><i>" + alarm.getLogMsg().replaceAll("\\<.*?>", "") + "</i></font>";
             }
             return richText;
         } else {
@@ -173,7 +173,7 @@ public class OpenNMSRestClient {
     }
 
     public synchronized OnmsNode getNodeForId(final int id) {
-        return getEntity(OnmsNode.class, "/rest/nodes",id);
+        return getEntity(OnmsNode.class, "/rest/nodes", id);
     }
 
     public InputStream graph(final String resourceId, final String report, final String start, final String end, final String width, final String height) {
